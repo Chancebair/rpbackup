@@ -5,8 +5,14 @@ import os.path
 import re
 import shutil
 
-includes = ['*.reapeaks', '*.rpp', '*.jcp', '*.gif']# for Reaper files only
+includes = ['*.reapeaks', '*.rpp', '*.jcp']# for Reaper files only
 path = ['/Users/chance.bair/Desktop/']
+
+print "Current folder being backed up:\n", path[0]
+resp = raw_input('Correct? (y/n): ')
+if resp == 'n':
+    path[0] = raw_input('What is the absolute pathname of the folder? : ')
+
 
 # transform glob patterns to regular expressions
 includes = r'|'.join([fnmatch.translate(x) for x in includes])
@@ -24,7 +30,6 @@ for root, dirs, files in os.walk(path[0]):
     files = [f for f in files if re.match(includes, f)]
 
     for fname in files:
-        print fname
         shutil.copy(fname, '/Users/chance.bair/Dropbox/Ambits/Reaper Backups/')
 
     # If reaper files, print out filename
