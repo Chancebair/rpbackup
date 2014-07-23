@@ -7,7 +7,8 @@ import shutil
 import Tkinter
 import sys
 
-
+# Framework for GUI
+#
 # class backup(Tkinter.Tk):
 #     def __init__(self, parent):
 #         Tkinter.Tk.__init__(self, parent)
